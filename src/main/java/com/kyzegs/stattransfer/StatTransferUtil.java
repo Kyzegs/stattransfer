@@ -15,19 +15,23 @@ public class StatTransferUtil {
 
 	public static void transfer() throws JSchException, SftpException {
 		JSch.setConfig("StrictHostKeyChecking", "no");
-		JSch jsch = new JSch();
+		final JSch jsch = new JSch();
 
-		Session jschSession = jsch.getSession(plugin.sftpUser, plugin.sftpHost, plugin.sftpPort);
+		final Session jschSession = jsch.getSession(plugin.sftpUser, plugin.sftpHost, plugin.sftpPort);
 		jschSession.setPassword(plugin.sftpPassword);
 		jschSession.connect();
 
-		ChannelSftp channelSftp = (ChannelSftp)jschSession.openChannel("sftp");
+		final ChannelSftp channelSftp = (ChannelSftp)jschSession.openChannel("sftp");
 		channelSftp.connect();
 
-		String rootPath = Bukkit.getServer().getWorldContainer().getAbsolutePath();
-		File statsPath = new File(rootPath, "world/stats");
-		for (File f : statsPath.listFiles()) {
-			channelSftp.put(f.getAbsolutePath(), plugin.sftpRemoteDir + f.getName());
+		final String rootPath = Bukkit.getServer().getWorldContainer().getAbsolutePath();
+		final File statsPath = new File(rootPath, "world/stats");
+		if (statsPath.exists() && statsPath.listFiles().length >= 0) {
+			for (final File f : statsPath.listFiles()) {
+				channelSftp.put(f.getAbsolutePath(), plugin.sftpRemoteDir + f.getName());
+			}
+		} else {
+			plugin.getServer().getLogger().warning("'world/stats' doesn't exist, or nothing to transfer.");
 		}
 
 		channelSftp.exit();
