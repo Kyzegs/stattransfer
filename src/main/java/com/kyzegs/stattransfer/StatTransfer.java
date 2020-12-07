@@ -1,6 +1,8 @@
 package com.kyzegs.stattransfer;
 
 import java.io.IOException;
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,8 +19,9 @@ public class StatTransfer extends JavaPlugin {
 	public void onEnable() {
 		saveDefaultConfig();
 
-		if (!getDataFolder().exists())
+		if (!getDataFolder().exists()) {
 			getDataFolder().mkdir();
+		}
 
 		try {
 			getConfig().load(getDataFolder() + "/config.yml");
@@ -38,11 +41,22 @@ public class StatTransfer extends JavaPlugin {
 				try {
 					StatTransferUtil.transfer();
 				} catch (JSchException | SftpException e) {
-					getLogger().warning("SFTP settings in config.yml are most likely incorrect");
+					getLogger().warning(getString("log.JSchSftpExceptionWarning"));
 					e.printStackTrace();
 					cancel();
 				}
 			}
 		}.runTaskTimer(this, 0, 6000);
+	}
+
+	public String getString(String key) {
+		try {
+			return ResourceBundle
+					.getBundle("com.kyzegs.stattransfer.locale."
+							+ getConfig().getString("language", "english").toLowerCase())
+					.getString(key);
+		} catch (final MissingResourceException e) {
+			return '!' + key + '!';
+		}
 	}
 }

@@ -1,3 +1,4 @@
+language: english
 sftp:
   host: localhost
   port: 22
