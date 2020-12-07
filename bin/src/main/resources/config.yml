@@ -1,6 +1,0 @@
-sftp:
-  host: localhost
-  port: 22
-  user: username
-  password: password
-  remote-dir: directory
