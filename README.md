@@ -16,6 +16,6 @@ This plugin does no actual stat tracking on its own. Instead, it siphons data fr
 ### Localization
 This plugin supports the following languages:
 
- - English - english - Original language
- - Bulgarian - bulgarian - [WolfNT90](https://github.com/WolfNT90)
- - Spanish - spanish - [nynxus](https://twitter.com/nynxus)
+ - English - Original language
+ - Bulgarian - [WolfNT90](https://github.com/WolfNT90)
+ - Spanish - [nynxus](https://twitter.com/nynxus)

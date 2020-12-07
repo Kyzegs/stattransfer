@@ -52,7 +52,8 @@ public class StatTransfer extends JavaPlugin {
 	public String getString(String key) {
 		try {
 			return ResourceBundle
-					.getBundle("com.kyzegs.stattransfer.locale." + getConfig().getString("language", "english"))
+					.getBundle("com.kyzegs.stattransfer.locale."
+							+ getConfig().getString("language", "english").toLowerCase())
 					.getString(key);
 		} catch (final MissingResourceException e) {
 			return '!' + key + '!';
