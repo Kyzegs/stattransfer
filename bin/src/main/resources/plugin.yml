@@ -1,0 +1,7 @@
+name: StatTransfer
+version: 0.0.1
+description: Uploads user statistics to a remote server
+author: Sebastiaan "Kyzegs" Zegers
+
+main: com.kyzegs.stattransfer.StatTransfer
+api-version: 1.14

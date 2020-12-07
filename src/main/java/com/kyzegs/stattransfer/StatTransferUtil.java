@@ -21,7 +21,7 @@ public class StatTransferUtil {
 		jschSession.setPassword(plugin.sftpPassword);
 		jschSession.connect();
 
-		final ChannelSftp channelSftp = (ChannelSftp)jschSession.openChannel("sftp");
+		final ChannelSftp channelSftp = (ChannelSftp) jschSession.openChannel("sftp");
 		channelSftp.connect();
 
 		final String rootPath = Bukkit.getServer().getWorldContainer().getAbsolutePath();
@@ -31,7 +31,7 @@ public class StatTransferUtil {
 				channelSftp.put(f.getAbsolutePath(), plugin.sftpRemoteDir + f.getName());
 			}
 		} else {
-			plugin.getServer().getLogger().warning("'world/stats' doesn't exist, or nothing to transfer.");
+			plugin.getServer().getLogger().warning(plugin.getString("log.emptyTransfer"));
 		}
 
 		channelSftp.exit();
