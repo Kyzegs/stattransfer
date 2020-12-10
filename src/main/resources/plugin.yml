@@ -1,5 +1,5 @@
 name: StatTransfer
-version: 0.0.1
+version: 0.0.8
 description: Uploads user statistics to a remote server
 author: Sebastiaan "Kyzegs" Zegers
 
