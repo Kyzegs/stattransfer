@@ -5,6 +5,7 @@ This plugin does no actual stat tracking on its own. Instead, it siphons data fr
 ### config.yml
 ```yml
 language: english
+transfer-task-delay: 6000 # in server ticks. Default is 5 minutes
 sftp:
    host: localhost # The domain or IP that the plugin should attempt to upload to
    port: 22 # The port on which your SFTP server is listening
@@ -17,5 +18,6 @@ sftp:
 This plugin supports the following languages:
 
  - English - Original language
+ - Dutch - [Kyzegs](https://github.com/Kyzegs)
  - Bulgarian - [WolfNT90](https://github.com/WolfNT90)
  - Spanish - [nynxus](https://twitter.com/nynxus)
