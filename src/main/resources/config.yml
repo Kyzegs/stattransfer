@@ -1,4 +1,5 @@
 language: english
+transfer-task-delay: 6000
 sftp:
   host: localhost
   port: 22
