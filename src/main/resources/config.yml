@@ -6,3 +6,4 @@ sftp:
   user: username
   password: password
   remote-dir: directory
+  create-worldname-subdirs: false
