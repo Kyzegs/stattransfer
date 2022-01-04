@@ -12,6 +12,7 @@ sftp:
    user: username # The username for your SFTP server
    password: password # The password for your SFTP server
    remote-dir: directory # The directory on the SFTP server to which the plugin should upload the player's statistics
+   create-worldname-subdirs: false # Whether or not to make a new sub-directory on the SFTP server for each world's stats. This defaults to FALSE to be backwards compatible with previous iterations, as well as it's only necessary if you run a multi-world Minecraft server
 ```
 
 ### Localization
